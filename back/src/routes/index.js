@@ -1,8 +1,9 @@
 import express from 'express';
+import userRoutes from './user';
 
 const router = express.Router();
 
-// router.use(authRoutes);
+router.use('/api/users', userRoutes);
 // router.use(cartRoutes);
 // router.use(categoryRoutes);
 // router.use(orderRoutes);

@@ -4,9 +4,9 @@
   "description": "",
   "main": "src/server.js",
   "scripts": {
-    "start": "nodemon --exec babel-node src/server.js",
+    "start": "nodemon --exec babel-node src",
     "build": "babel src --out-dir dist && cp -R src/views dist/",
-    "start:prod": "node dist/app.js"
+    "start:prod": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
