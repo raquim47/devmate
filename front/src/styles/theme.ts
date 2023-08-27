@@ -15,9 +15,12 @@ export const theme: DefaultTheme = {
     gray: '#303133',
     red: '#ea726f',
     blue: {
-      dark: '##191D37',
+      dark: '#191D37',
       normal: '#338BFD',
       light: '#99B8FE',
+    },
+    border: {
+      lightGray: '#f0f0f0',
     },
   },
 

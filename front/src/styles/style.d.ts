@@ -13,11 +13,14 @@ declare module 'styled-components' {
         normal: string;
       };
       gray: string;
-      red : string;
+      red: string;
       blue: {
         dark: string;
         normal: string;
         light: string;
+      };
+      border: {
+        lightGray: string;
       };
     };
 
