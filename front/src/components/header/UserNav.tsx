@@ -16,8 +16,8 @@ const Wrapper = styled.nav`
     text-decoration: underline;
   }
 
-  a::before,
-  button::before {
+  a:not(:last-child)::before,
+  button:not(:last-child)::before {
     position: absolute;
     top: 10%;
     right: -19px;
@@ -25,11 +25,6 @@ const Wrapper = styled.nav`
     height: 70%;
     background-color: ${(props) => props.theme.color.black.light};
     content: '';
-  }
-
-  a:last-child::before,
-  button:last-child::before {
-    content: none;
   }
 `;
 
