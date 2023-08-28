@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import LogoIcon from '../logo/LogoIcon';
-import LogoText from '../logo/LogoText';
+import LogoIcon from '../icon/LogoIcon';
+import LogoText from '../icon/LogoText';
 import UserNav from './UserNav';
 
 const Wrapper = styled.header`

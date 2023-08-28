@@ -8,7 +8,7 @@ const Wrapper = styled.nav`
   a,
   button {
     position: relative;
-    color: ${(props) => props.theme.color.black.middle};
+    color: #1A1D37;
   }
 
   a:hover,
@@ -37,7 +37,6 @@ const UserNav = () => {
         <>
           <Link to="/login">로그인</Link>
           <Link to="/signup">회원가입</Link>
-          <button>로그아웃</button>
         </>
       ) : (
         <>
