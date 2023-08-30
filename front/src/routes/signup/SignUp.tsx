@@ -1,5 +1,5 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import useCustomNavigate from '../../hooks/useCustomNavigate';
 import styled from 'styled-components';
 import FormButton from '../../components/form/FormButton';
 import { SIGNUP_FIELDS, SignupFormData } from './signup.config';
@@ -58,11 +58,9 @@ const SignUp = () => {
       console.log('동의사항에 동의해!');
       return;
     }
-
-    console.log(data);
   };
 
-  const navigate = useNavigate();
+  const navigate = useCustomNavigate();
   return (
     <Wrapper>
       <h2>회원가입</h2>
@@ -95,7 +93,7 @@ const SignUp = () => {
         </Fieldset>
         <Fieldset>
           {AGREEMENT.map((field) => (
-            <field.component key={field.id} label={field.label} registerOptions={register(field.id)} />
+            <field.component key={field.id} label={field.label} registerOptions={register(field.id)} content={field.content} />
           ))}
           <FormButton>가입 완료</FormButton>
           <FormButton variant="secondary" type="button" onClick={() => navigate('/login')}>

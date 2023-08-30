@@ -1,5 +1,5 @@
 import { RegisterOptions } from 'react-hook-form';
-import CheckboxField from '../../components/form/CheckboxField';
+import CheckboxField from '../../components/form/CheckField';
 import InputField from '../../components/form/InputField';
 import SelectField from '../../components/form/SelectField';
 import TextAreaField from '../../components/form/TextAreaField';
@@ -22,6 +22,10 @@ interface SignupField {
   type?: string;
   validation?: RegisterOptions<SignupFormData>;
   options?: string[];
+  content?: {
+    title?: string;  
+    description: string;  
+  }[];
 }
 
 interface SignupFields {
@@ -97,9 +101,14 @@ export const SIGNUP_FIELDS: SignupFields = {
   ],
   AGREEMENT: [
     {
-      label: '(필수) 이용약관 동의',
+      label: '(필수) 개인정보 수집 및 이용 동의',
       id: 'agreement',
       component: CheckboxField,
+      content: [
+        { title: "목적", description: "이용자 식별 및 본인 여부 확인" },
+        { title: "항목", description: "성명, 휴대전화, 이메일, 비밀번호" },
+        { title: "보유기간", description: "회원 탈퇴 시 파기" },
+      ],
     },
   ],
 };

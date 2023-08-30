@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import useCustomNavigate from '../../hooks/useCustomNavigate';
 import styled from 'styled-components';
 import FormButton from '../../components/form/FormButton';
 import { LoginFormData, LOGIN_FIELDS } from './login.config';
@@ -36,7 +36,7 @@ const Login = () => {
   } = useForm<LoginFormData>({ mode: 'onBlur' });
 
   const onSubmit = () => {};
-  const navigate = useNavigate();
+  const navigate = useCustomNavigate();
   return (
     <Wrapper>
       <h2>로그인</h2>
