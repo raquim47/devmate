@@ -11,21 +11,19 @@ const Wrapper = styled.div`
   }
 
   input[type='checkbox'] {
-    background-color: #f8f8f8;
-    border: 1px solid #d8d8d8;
-    border-radius: 4px;
+    border: 1px solid ${({ theme }) => theme.color.border};
     width: 18px;
     height: 18px;
     cursor: pointer;
     outline: none;
 
     &:checked {
-      background-color: #1a1d37;
+      accent-color: ${({ theme }) => theme.color.blue};
     }
   }
 
   label {
-    font-size: 14px;
+    font-size:${({ theme }) => theme.fontSize.s};
     cursor: pointer;
   }
 `;
@@ -35,16 +33,16 @@ const Content = styled.dl`
   flex-direction: column;
   gap: 10px;
   margin-top: 10px;
-  background-color: #f8f8f8;
-  border-radius: 4px;
+  background-color: ${({ theme }) => theme.color.grayLight};
+  border-radius: ${({ theme }) => theme.borderRadius};
   padding: 20px;
 `;
 
 const ContentItem = styled.div`
   display: flex;
   gap: 10px;
-  font-size: 12px;
-  color: #919191;
+  font-size:${({ theme }) => theme.fontSize.xs};
+  color: ${({ theme }) => theme.color.grayDark};
 
   dt {
     width: 80px;
@@ -61,7 +59,6 @@ interface CheckboxFieldProps {
 }
 
 const CheckboxField = ({ label, registerOptions, content }: CheckboxFieldProps) => {
-  console.log(content);
   return (
     <Wrapper>
       <div className="inner">

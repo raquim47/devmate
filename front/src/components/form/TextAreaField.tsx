@@ -7,27 +7,24 @@ const Wrapper = styled.div`
   flex-direction: column;
   width: 100%;
   padding: 40px 10px 20px 15px;
-  border-radius: 4px;
-  background-color: #f8f8f8;
-  border: 1px solid #d8d8d8;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  background-color: ${({ theme }) => theme.color.grayLight};
+  border: 1px solid ${({ theme }) => theme.color.border};
   margin-bottom: 10px;
 
   label {
     position: absolute;
     top: 10px;
     left: 15px;
-    font-size: 12px;
-    color: #919191;
+    font-size: ${({ theme }) => theme.fontSize.s};
+    color: ${({ theme }) => theme.color.grayDark};;
     pointer-events: none;
   }
 
   textarea {
-    background-color: #f8f8f8;
+    background-color: ${({ theme }) => theme.color.grayLight};
     border: none;
-    font-size: 16px;
-    outline: none;
     height: 100px;
-    resize: none;
   }
 `;
 

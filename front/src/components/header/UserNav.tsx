@@ -8,7 +8,6 @@ const Wrapper = styled.nav`
   a,
   button {
     position: relative;
-    color: #1A1D37;
   }
 
   a:hover,
@@ -23,7 +22,7 @@ const Wrapper = styled.nav`
     right: -19px;
     width: 1px;
     height: 70%;
-    background-color: ${(props) => props.theme.color.black.light};
+    background-color: ${(props) => props.theme.color.border};
     content: '';
   }
 `;

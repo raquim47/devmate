@@ -3,26 +3,24 @@ import styled from 'styled-components';
 
 const Button = styled.button`
   padding: 15px 0;
-  border-radius: 4px;
-  cursor: pointer;
 
   &.primary {
-    background-color: #4195f5;
-    color: #fff;
+    background-color: ${({ theme }) => theme.color.blue};
+    color: ${({ theme }) => theme.color.white};
 
     &:hover {
-      background-color: #187cee;
+      background-color: ${({ theme }) => theme.color.blueDark};
     }
   }
 
   &.secondary {
-    background-color: #fff;
-    border: 1px solid #d8d8d8;
-    color: #919191;
+    background-color: ${({ theme }) => theme.color.white};
+    border: 1px solid ${({ theme }) => theme.color.border};
+    color: ${({ theme }) => theme.color.grayDark};
 
     &:hover {
-      background-color: #f8f8f8;
-      color: #1a1d37;
+      background-color: ${({ theme }) => theme.color.grayLight};
+      color: ${({ theme }) => theme.color.defaultText};
     }
   }
 `;

@@ -3,35 +3,32 @@ import 'styled-components';
 declare module 'styled-components' {
   export interface DefaultTheme {
     color: {
-      black: {
-        light: string;
-        middle: string;
-        normal: string;
-      };
-      white: {
-        dark: string;
-        normal: string;
-      };
+      defaultText: string;
       gray: string;
+      grayLight: string;
+      grayDark: string;
+      black: string;
+      white: string;
+      border: string;
       red: string;
-      blue: {
-        dark: string;
-        normal: string;
-        light: string;
-      };
-      border: {
-        lightGray: string;
-      };
+      blue: string;
+      blueDark: string;
     };
 
-    fontSizeVw: {
-      [key: string]: string;
-    };
-    fontSizePx: {
-      [key: string]: string;
+    fontSize: {
+      xxs: string;
+      xs: string;
+      s: string;
+      m: string;
+      l: string;
+      xl: string;
+      xxl: string;
     };
     zIndex: {
+      dropDown: number;
       modal: number;
     };
+    boxShadow: string;
+    borderRadius: string;
   }
 }

@@ -3,50 +3,35 @@ import { DefaultTheme } from 'styled-components';
 export const theme: DefaultTheme = {
   // color
   color: {
-    black: {
-      light: '#ddd',
-      middle: '#333',
-      normal: '#000',
-    },
-    white: {
-      dark: '#d4d7db',
-      normal: '#fff',
-    },
-    gray: '#303133',
+    defaultText : '#1a1d37',
+    gray:'#333',
+    grayLight : '#f8f8f8',
+    grayDark : '#919191',
+
+    black: '#000',
+    white: '#fff',
+
+    border : '#d8d8d8',
     red: '#ea726f',
-    blue: {
-      dark: '#191D37',
-      normal: '#338BFD',
-      light: '#99B8FE',
-    },
-    border: {
-      lightGray: '#f0f0f0',
-    },
+    
+    blue: '#4195f5',
+    blueDark: '#187cee',
   },
 
   // fontSize
-  fontSizeVw: {
-    xs: '0.8vw',
-    s: '1.2vw',
-    m: '1.6vw',
-    l: '2vw',
-    xl: '2.5vw',
-    xxl: '3vw',
-    '3xl': '4vw',
-    '4xl': '6vw',
-  },
-  fontSizePx: {
+  fontSize: {
     xxs: '10px',
     xs: '12px',
     s: '14px',
     m: '16px',
     l: '20px',
-    xl: '24px',
-    xxl: '28px',
-    '3xl': '32px',
-    '4xl': '36px',
+    xl: '30px',
+    xxl: '36px',
   },
   zIndex: {
+    dropDown: 1,
     modal: 10,
   },
+  boxShadow : '0px 4px 10px rgba(0, 0, 0, 0.1)',
+  borderRadius : '4px',
 };

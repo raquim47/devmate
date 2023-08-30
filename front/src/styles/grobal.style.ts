@@ -21,32 +21,9 @@ time, mark, audio, video {
   font: inherit;
   vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, main, menu, nav, section {
   display: block;
-}
-html::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-html::-webkit-scrollbar-thumb {
-  background-color: #4e4e4e;
-  border-radius: 100px;
-}
-html::-webkit-scrollbar-track {
-  background-color: #4e4e4e;
-  border-radius: 100px;
-  background-clip: padding-box;
-  border: 3px solid transparent;
-}
-/* HTML5 hidden-attribute fix for newer browsers */
-*[hidden] {
-    display: none;
-}
-body {
-  overflow-x: hidden;
-  line-height: 1;
 }
 menu, ol, ul {
   list-style: none;
@@ -68,9 +45,11 @@ table {
 }
 
 body {
+  overflow-x: hidden;
   font-weight: 400;
   font-family: 'Source Sans Pro', sans-serif;
   line-height: 1.2;
+  color: ${({ theme }) => theme.color.defaultText};
 }
 
 body.scrollHidden {
@@ -83,12 +62,25 @@ a {
 }
 
 button {
-  font-size: 16px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: ${({ theme }) => theme.fontSize.m};
   background: none;
   border: none;
   font-weight: 400;
   padding: 0;
   cursor: pointer;
   font-family: inherit;
+  border-radius: ${({ theme }) => theme.borderRadius};
+}
+
+input,textarea {
+  font-family: 'Source Sans Pro', sans-serif;
+  outline: none;
+  font-size: ${({ theme }) => theme.fontSize.m};
+  border-radius: ${({ theme }) => theme.borderRadius};
+}
+
+textarea {
+  resize: none;
 }
 `;

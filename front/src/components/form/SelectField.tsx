@@ -14,18 +14,14 @@ const Wrapper = styled.div`
     position: absolute;
     top: 10px;
     left: 15px;
-    font-size: 12px;
-    color: #919191;
-    pointer-events: none;
+    font-size: ${({ theme }) => theme.fontSize.xs};
+    color: ${({ theme }) => theme.color.grayDark};
   }
 
   input {
     padding: 30px 10px 10px 15px;
-    border-radius: 4px;
-    background-color: #f8f8f8;
-    border: 1px solid #d8d8d8;
-    font-size: 16px;
-    outline: none;
+    background-color: ${({ theme }) => theme.color.grayLight};
+    border: 1px solid ${({ theme }) => theme.color.border};
     cursor: pointer;
   }
 `;
@@ -44,21 +40,21 @@ const DropdownList = styled.ul`
   left: 0;
   width: 100%;
   max-height: 163px;
-  border: 1px solid #d8d8d8;
-  border-radius: 4px;
-  background-color: #fff;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid ${({ theme }) => theme.color.border};
+  border-radius: ${({ theme }) => theme.borderRadius};
+  background-color: ${({ theme }) => theme.color.white};
+  box-shadow: ${({ theme }) => theme.boxShadow};
   overflow-y: auto;
-  z-index: 10;
+  z-index: ${({ theme }) => theme.zIndex.dropDown};
 `;
 
 const DropdownItem = styled.li`
-  border-bottom: 1px solid #d8d8d8;
+  border-bottom: 1px solid ${({ theme }) => theme.color.border};
   padding: 10px 15px;
   cursor: pointer;
 
   &:hover {
-    background-color: #f8f8f8;
+    background-color: ${({ theme }) => theme.color.grayLight};
   }
 
   &:last-child {
@@ -70,12 +66,12 @@ const ClearButton = styled.button`
   position: absolute;
   right: 65px;
   bottom: 35px;
-  font-size: 20px;
+  font-size: ${({ theme }) => theme.fontSize.l};
   cursor: pointer;
-  color: #919191;
+  color: ${({ theme }) => theme.color.grayDark};
 
   &:hover {
-    color: #000;
+    color: ${({ theme }) => theme.color.black};
   }
 `;
 
@@ -130,7 +126,7 @@ const SelectField = ({ id, label, options, registerOptions }: SelectFieldProps) 
       <label htmlFor={id}>{label}</label>
       <input id={id} name={id} value={selectedValue} onClick={() => setIsOpen(!isOpen)} readOnly />
       {selectedValue !== `${label} 선택` && <ClearButton onClick={handleReset}>×</ClearButton>}
-      <DropdownButton $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} type='button' >
+      <DropdownButton $isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} type="button">
         <ArrowIcon />
       </DropdownButton>
       {isOpen && (

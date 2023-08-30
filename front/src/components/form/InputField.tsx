@@ -24,26 +24,23 @@ export const Wrapper = styled.div<{ $hasError?: boolean }>`
     position: absolute;
     top: 10px;
     left: 15px;
-    font-size: 12px;
-    color: #919191;
-    pointer-events: none;
+    font-size: ${({ theme }) => theme.fontSize.xs};
+    color: ${({ theme }) => theme.color.grayDark};
   }
 
   input {
     padding: 30px 10px 10px 15px;
-    border-radius: 4px;
-    background-color: #f8f8f8;
-    border: 1px solid #d8d8d8;
-    font-size: 16px;
-    outline: none;
+    border-radius: ${({ theme }) => theme.borderRadius};
+    background-color: ${({ theme }) => theme.color.grayLight};
+    border: 1px solid ${({ theme }) => theme.color.border};
   }
 
   span {
     position: absolute;
     bottom: 0;
     left: 15px;
-    font-size: 12px;
-    color: ${(props) => props.theme.color.red};
+    font-size: ${({ theme }) => theme.fontSize.xs};
+    color: ${({ theme }) => theme.color.red};
     animation: ${shake} 0.2s;
   }
 `;

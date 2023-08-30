@@ -5,7 +5,8 @@ import styled from 'styled-components';
 const bgChangePaths = ['/login', '/signup'];
 
 const Wrapper = styled.main<{ $path: string }>`
-  background-color: ${(props) => (bgChangePaths.includes(props.$path) ? '#F7F7F7' : '#FFF')};
+  background-color: ${({ $path, theme }) =>
+    bgChangePaths.includes($path) ? theme.color.grayLight : theme.color.white};
 `;
 
 const Inner = styled.div`
@@ -15,7 +16,7 @@ const Inner = styled.div`
   max-width: 1280px;
   min-height: calc(100vh - 80px);
   margin: 0 auto;
-  padding: 40px 0;
+  padding: 60px 0;
 `;
 
 interface MainProps {

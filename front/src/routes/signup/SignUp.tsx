@@ -6,16 +6,15 @@ import { SIGNUP_FIELDS, SignupFormData } from './signup.config';
 const { ESSENTIAL, OPTIONAL, AGREEMENT } = SIGNUP_FIELDS;
 
 const Wrapper = styled.div`
-  border: 1px solid #d8d8d8;
+  border: 1px solid ${({ theme }) => theme.color.border};
   min-width: 600px;
   padding: 50px 50px 70px;
-  background-color: #fff;
-  border-radius: 4px;
+  background-color: ${({ theme }) => theme.color.white};
+  border-radius: ${({ theme }) => theme.borderRadius};
 
   h2 {
     margin-bottom: 50px;
-    color: #1a1d37;
-    font-size: 30px;
+    font-size: ${({ theme }) => theme.fontSize.xl};
     font-weight: 500;
     text-align: center;
   }
@@ -34,15 +33,15 @@ const Fieldset = styled.fieldset`
   gap: 10px;
 
   h3 {
-    font-size: 20px;
+    font-size: ${({ theme }) => theme.fontSize.l};;
     font-weight: 500;
     margin-bottom: 10px;
   }
 `;
 
 const Notice = styled.p`
-  font-size: 14px;
-  color: #919191;
+  font-size:${({ theme }) => theme.fontSize.xs};
+  color: ${({ theme }) => theme.color.grayDark};
 `;
 
 const SignUp = () => {
@@ -93,7 +92,12 @@ const SignUp = () => {
         </Fieldset>
         <Fieldset>
           {AGREEMENT.map((field) => (
-            <field.component key={field.id} label={field.label} registerOptions={register(field.id)} content={field.content} />
+            <field.component
+              key={field.id}
+              label={field.label}
+              registerOptions={register(field.id)}
+              content={field.content}
+            />
           ))}
           <FormButton>가입 완료</FormButton>
           <FormButton variant="secondary" type="button" onClick={() => navigate('/login')}>
