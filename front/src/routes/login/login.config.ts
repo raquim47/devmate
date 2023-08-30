@@ -1,5 +1,5 @@
 import { RegisterOptions } from 'react-hook-form';
-import InputField from '../../components/form/InputField';
+import InputField from 'components/form/InputField';
 
 export interface LoginFormData {
   email: string;

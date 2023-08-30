@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useState, useRef, useEffect } from 'react';
-import ArrowIcon from '../icon/ArrowIcon';
 import { UseFormRegisterReturn } from 'react-hook-form';
+import ArrowIcon from 'components/icon/ArrowIcon';
 
 const Wrapper = styled.div`
   position: relative;

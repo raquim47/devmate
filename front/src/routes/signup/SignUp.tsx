@@ -1,7 +1,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
-import useCustomNavigate from '../../hooks/useCustomNavigate';
 import styled from 'styled-components';
-import FormButton from '../../components/form/FormButton';
+import useCustomNavigate from 'hooks/useCustomNavigate';
+import FormButton from 'components/form/FormButton';
 import { SIGNUP_FIELDS, SignupFormData } from './signup.config';
 const { ESSENTIAL, OPTIONAL, AGREEMENT } = SIGNUP_FIELDS;
 

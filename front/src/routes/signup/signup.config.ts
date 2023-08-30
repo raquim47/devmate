@@ -1,8 +1,8 @@
 import { RegisterOptions } from 'react-hook-form';
-import CheckboxField from '../../components/form/CheckField';
-import InputField from '../../components/form/InputField';
-import SelectField from '../../components/form/SelectField';
-import TextAreaField from '../../components/form/TextAreaField';
+import CheckboxField from 'components/form/CheckField';
+import InputField from 'components/form/InputField';
+import SelectField from 'components/form/SelectField';
+import TextAreaField from 'components/form/TextAreaField';
 
 export interface SignupFormData {
   email: string;

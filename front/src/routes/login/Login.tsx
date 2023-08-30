@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
-import useCustomNavigate from '../../hooks/useCustomNavigate';
 import styled from 'styled-components';
-import FormButton from '../../components/form/FormButton';
+import useCustomNavigate from 'hooks/useCustomNavigate';
+import FormButton from 'components/form/FormButton';
 import { LoginFormData, LOGIN_FIELDS } from './login.config';
 
 const Wrapper = styled.div`
