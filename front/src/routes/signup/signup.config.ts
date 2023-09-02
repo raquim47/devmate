@@ -65,6 +65,10 @@ export const SIGNUP_FIELDS: SignupFields = {
       type: 'password',
       validation: {
         required: '비밀번호를 입력해주세요',
+        pattern: {
+          value: /^.{6,}$/,  
+          message: '비밀번호는 6글자 이상이어야 합니다',
+        }
       },
       component: InputField,
     },

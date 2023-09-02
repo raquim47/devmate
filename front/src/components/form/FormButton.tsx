@@ -28,13 +28,14 @@ const Button = styled.button`
 interface FormButtonProps {
   variant?: 'primary' | 'secondary';
   type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   children: ReactNode;
 }
 
-const FormButton = ({ variant = 'primary', type = 'submit', onClick, children }: FormButtonProps) => {
+const FormButton = ({ variant = 'primary', type = 'submit', onClick, disabled, children }: FormButtonProps) => {
   return (
-    <Button className={variant} type={type} onClick={onClick}>
+    <Button className={variant} type={type} onClick={onClick} disabled={disabled}>
       {children}
     </Button>
   );
