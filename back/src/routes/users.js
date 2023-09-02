@@ -3,7 +3,7 @@ import User from '../models/user';
 import setUserToken from '../utils/set-user-token';
 import bcrypt from 'bcrypt';
 import buildResponse from '../utils/build-response';
-import errorHandler from '../utils/errorHandler';
+import errorHandler from '../utils/error-handler';
 import { ERROR } from '../utils/constants';
 
 const router = express.Router();
@@ -17,8 +17,8 @@ router.get(
       if (!user) {
         return res.status(404).json(buildResponse(null, ERROR.USER_NOT_FOUND));
       }
-
-      return res.json(buildResponse({ isAuth: true, ...user }));
+      const userData = { ...user._doc, isAuth: true };
+      return res.json(buildResponse(userData));
     } else {
       const defaultData = {
         isAuth: false,
@@ -46,8 +46,7 @@ router.post(
     }
 
     setUserToken(res, user);
-    const authStatus = { isAuth: true, isAdmin: user.isAdmin };
-    res.json(buildResponse(authStatus));
+    res.json(buildResponse());
   })
 );
 

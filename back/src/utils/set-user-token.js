@@ -8,7 +8,7 @@ const setUserToken = (res, user) => {
     isAdmin: user.isAdmin,
   };
   const token = jwt.sign(payload, process.env.JWT_SECRET);
-  res.cookie('token', token);
+  res.cookie('token', token, { httpOnly: true });
 };
 
 export default setUserToken;

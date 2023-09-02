@@ -6,12 +6,15 @@ import getUserFromJWT from './middlewares/get-user-jwt';
 import dotenv from 'dotenv';
 import initPassport from './passport';
 import indexRoutes from './routes';
-
+import cors from 'cors';
 dotenv.config();
 initPassport();
 
 const app = express();
-
+app.use(cors({
+  origin: 'http://localhost:3000', 
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
