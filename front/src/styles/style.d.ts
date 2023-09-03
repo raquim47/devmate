@@ -26,7 +26,7 @@ declare module 'styled-components' {
     };
     zIndex: {
       dropDown: number;
-      modal: number;
+      toast: number;
     };
     boxShadow: string;
     borderRadius: string;

@@ -1,7 +1,9 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import useCustomNavigate from 'hooks/useCustomNavigate';
 import FormButton from 'components/form/FormButton';
 import FormLayout from 'components/form/FormLayout';
+import { showToast } from 'store/slice/toast.slice';
 import { useGetMeQuery, useLoginMutation } from 'store/api/users.api';
 import { LoginFormData, LOGIN_FIELDS } from './login.config';
 
@@ -13,23 +15,34 @@ const Login = () => {
     clearErrors,
     setError,
   } = useForm<LoginFormData>({ mode: 'onBlur' });
+
   const navigate = useCustomNavigate();
+  const dispatch = useDispatch();
   const [login, { isLoading }] = useLoginMutation();
-  const { refetch, data: userData } = useGetMeQuery();
+  const { refetch } = useGetMeQuery();
+
   const onSubmit: SubmitHandler<LoginFormData> = async (data) => {
     try {
       await login(data).unwrap();
-      refetch();
-      navigate('/');
+      try {
+        await refetch();
+        dispatch(showToast({ message: '로그인이 완료되었습니다!', type: 'success' }));
+        navigate('/');
+      } catch (refetchError) {
+        dispatch(showToast({ message: '데이터를 새로고침하는데 실패했습니다.\n다시 시도해주세요.', type: 'error' }));
+      }
     } catch (error) {
       const customError = error as { status: number; data: { error: string } };
-      const errorMessage = customError.data.error;
-      if (customError.status === 404) {
-        setError('email', { message: errorMessage }, { shouldFocus: true });
-      } else if (customError.status === 401) {
-        setError('password', { message: errorMessage }, { shouldFocus: true });
-      } else {
-        console.log('로그인에 실패했습니다.');
+      const errorMessage = customError?.data?.error;
+      switch (customError.status) {
+        case 404:
+          setError('email', { message: errorMessage }, { shouldFocus: true });
+          break;
+        case 401:
+          setError('password', { message: errorMessage }, { shouldFocus: true });
+          break;
+        default:
+          dispatch(showToast({ message: errorMessage, type: 'error' }));
       }
     }
   };

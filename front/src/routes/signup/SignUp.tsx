@@ -5,6 +5,8 @@ import FormButton from 'components/form/FormButton';
 import FormLayout from 'components/form/FormLayout';
 import { useSignupMutation } from 'store/api/users.api';
 import { SIGNUP_FIELDS, SignupFormData } from './signup.config';
+import { useDispatch } from 'react-redux';
+import { showToast } from 'store/slice/toast.slice';
 
 const { ESSENTIAL, OPTIONAL, AGREEMENT } = SIGNUP_FIELDS;
 
@@ -27,6 +29,7 @@ const Notice = styled.p`
 
 const SignUp = () => {
   const navigate = useCustomNavigate();
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -34,23 +37,27 @@ const SignUp = () => {
     clearErrors,
     setError,
   } = useForm<SignupFormData>({ mode: 'onBlur', shouldFocusError: true });
-
+  
   const [signup, { isLoading }] = useSignupMutation();
 
   const onSubmit: SubmitHandler<SignupFormData> = async (data) => {
     if (!data.agreement) {
-      console.log('동의사항에 동의해주세요!');
+      dispatch(showToast({ message: '동의사항을 체크해주세요.', type: 'error' }));
       return;
     }
     try {
       await signup(data).unwrap();
+      dispatch(showToast({ message: '회원가입이 완료되었습니다.', type: 'success' }));
+      navigate('/login');
     } catch (error) {
       const customError = error as { status: number; data: { error: string } };
-      const errorMessage = customError.data.error;
-      if (customError.status === 409) {
-        setError('email', { message: errorMessage }, { shouldFocus: true });
-      } else {
-        console.log('회원가입에 실패했습니다.');
+      const errorMessage = customError?.data?.error;
+      switch (customError.status) {
+        case 409:
+          setError('email', { message: errorMessage }, { shouldFocus: true });
+          break;
+        default:
+          dispatch(showToast({ message: errorMessage, type: 'error' }));
       }
     }
   };

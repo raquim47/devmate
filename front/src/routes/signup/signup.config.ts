@@ -10,7 +10,7 @@ export interface SignupFormData {
   password: string;
   passwordConfirm: string;
   location?: string;
-  job?: string;
+  position?: string;
   introduction?: string;
   agreement?: boolean;
 }
@@ -93,7 +93,7 @@ export const SIGNUP_FIELDS: SignupFields = {
     },
     {
       label: '직군',
-      id: 'job',
+      id: 'position',
       component: SelectField,
       options: ['프론트엔드', '백엔드', '디자인', '기획'],
     },

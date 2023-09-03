@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useGetMeQuery } from 'store/api/users.api';
 import styled from 'styled-components';
 
 const Wrapper = styled.nav`
@@ -27,22 +28,22 @@ const Wrapper = styled.nav`
   }
 `;
 
-let isLoggedIn = true;
-
 const UserNav = () => {
+  const { data: userData, isLoading } = useGetMeQuery();
   return (
     <Wrapper>
-      {isLoggedIn ? (
-        <>
-          <Link to="/login">로그인</Link>
-          <Link to="/signup">회원가입</Link>
-        </>
-      ) : (
-        <>
-          <Link to="/mypage">마이페이지</Link>
-          <Link to="/logout">로그아웃</Link>
-        </>
-      )}
+      {!isLoading &&
+        (userData?.data?.isAuth ? (
+          <>
+            <Link to="/mypage">마이페이지</Link>
+            <Link to="/logout">로그아웃</Link>
+          </>
+        ) : (
+          <>
+            <Link to="/login">로그인</Link>
+            <Link to="/signup">회원가입</Link>
+          </>
+        ))}
     </Wrapper>
   );
 };
