@@ -70,6 +70,7 @@ button {
   padding: 0;
   cursor: pointer;
   font-family: inherit;
+  line-height: 1.2;
   border-radius: ${({ theme }) => theme.borderRadius};
 }
 

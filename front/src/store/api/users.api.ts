@@ -48,7 +48,13 @@ export const usersApi = createApi({
         body: data,
       }),
     }),
+    logout: builder.mutation<ApiResponse<void>, void>({
+      query: () => ({
+        url: 'logout',
+        method: 'POST',
+      }),
+    }),
   }),
 });
 
-export const { useGetMeQuery, useLoginMutation, useSignupMutation } = usersApi;
+export const { useGetMeQuery, useLoginMutation, useSignupMutation, useLogoutMutation } = usersApi;

@@ -1,5 +1,7 @@
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useGetMeQuery } from 'store/api/users.api';
+import { useGetMeQuery, useLogoutMutation } from 'store/api/users.api';
+import { showToast } from 'store/slice/toast.slice';
 import styled from 'styled-components';
 
 const Wrapper = styled.nav`
@@ -30,13 +32,26 @@ const Wrapper = styled.nav`
 
 const UserNav = () => {
   const { data: userData, isLoading } = useGetMeQuery();
+  const [logout] = useLogoutMutation();
+  const dispatch = useDispatch();
+  const handleLogout = async () => {
+    try {
+      await logout().unwrap();
+      window.location.assign('/');
+    } catch (error) {
+      const customError = error as { status: number; data: { error: string } };
+      const errorMessage = customError?.data?.error;
+      dispatch(showToast({ message: errorMessage, type: 'error' }));
+    }
+  };
+
   return (
     <Wrapper>
       {!isLoading &&
         (userData?.data?.isAuth ? (
           <>
             <Link to="/mypage">마이페이지</Link>
-            <Link to="/logout">로그아웃</Link>
+            <button onClick={handleLogout}>로그아웃</button>
           </>
         ) : (
           <>

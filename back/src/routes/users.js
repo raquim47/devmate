@@ -54,7 +54,8 @@ router.post(
 router.post(
   '/signup',
   errorHandler(async (req, res) => {
-    const { email, username, password } = req.body;
+    console.log(req.body);
+    const { email, username, password, location, position, introduction } = req.body;
     const existingUser = await User.findOne({ email });
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -66,10 +67,19 @@ router.post(
       email,
       username,
       password: hashedPassword,
+      location,
+      position,
+      introduction,
     });
 
     res.json(buildResponse());
   })
 );
+
+// 로그아웃
+router.post('/logout', (req, res) => {
+  res.clearCookie('token');
+  return res.json(buildResponse());
+});
 
 export default router;

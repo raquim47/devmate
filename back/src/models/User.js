@@ -9,8 +9,8 @@ const userSchema = new Schema({
   isAdmin: { type: Boolean, default: false },
   imgUrl: { type: String },
   location: { type: String },
-  introduce: { type: String },
-  position: [{ type: String }],
+  introduction: { type: String },
+  position: { type: String },
   joinGroup: [{ type: Schema.Types.ObjectId, required: true, ref: 'Group' }],
   wishGroup: [{ type: Schema.Types.ObjectId, required: true, ref: 'Group' }],
 });
